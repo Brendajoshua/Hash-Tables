@@ -89,7 +89,19 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        # find the index using the given key
+        index = self._hash_mod(key)
+
+        # traverse the linked list at that index in storage until keys match
+        cur = self.storage[index]
+        while cur is not None:
+            if cur.key == key:
+                # return value at given key
+                return cur.value
+            cur = cur.next
+
+        # if key not found, return None
+        return None
 
 
     def resize(self):
